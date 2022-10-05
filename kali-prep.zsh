@@ -104,7 +104,7 @@ windapsearch                -                       Superseded by go-windapsearc
 
 
 function install_kali_prep {
-    printf "${BLUE}[*] Installing kali-prep ... ${NC}"
+    printf "${GREEN}[+] Installing kali-prep ... ${NC}"
 
     if [[ $WHATIF -eq 0 ]]; then
         echo '#!/bin/zsh' > /usr/local/bin/kali-prep
@@ -119,7 +119,7 @@ function install_kali_prep {
 
 
 function clone_repos {
-    printf "${BLUE}[*] Cloning repositories ... ${NC}\n"
+    printf "${GREEN}[+] Cloning repositories ... ${NC}\n"
 
     if [[ $WHATIF -eq 0 ]]; then
         mkdir ~/tools
@@ -240,7 +240,7 @@ install_template () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing <toolname> ...${NC}\n"
+        printf "${GREEN}[+] Installing <toolname> ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             ### install routine ###
@@ -254,7 +254,7 @@ install_template () {
 ########################################
 
 
-printf "${GREEN}[+] Entering installation routine for base module ...${NC}\n"
+printf "${BLUE}[+] Entering installation routine for base module ...${NC}\n"
 
 
 install_basic_packages () {
@@ -264,7 +264,7 @@ install_basic_packages () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
+        printf "${GREEN}[+] Installing basic pkgs ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             apt-get -y install apt-transport-https bridge-utils \
@@ -284,7 +284,7 @@ install_docker () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing docker ...${NC}\n"
+        printf "${GREEN}[+] Installing docker ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             mkdir -p /etc/apt/keyrings
@@ -297,7 +297,7 @@ $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
             apt-get update
             apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
             systemctl enable docker
-            printf "${BLUE}[*] Installing docker-compose ...${NC}\n"
+            printf "${GREEN}[+] Installing docker-compose ...${NC}\n"
             curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
             chmod +x /usr/local/bin/docker-compose
         fi
@@ -313,7 +313,7 @@ setup_go_env () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Setting up go environment ...${NC}\n"
+        printf "${GREEN}[+] Setting up go environment ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             echo '' >> ~/.zshrc
@@ -334,7 +334,7 @@ install_open_vm_tools () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing open-vm-tools ...${NC}\n"
+        printf "${GREEN}[+] Installing open-vm-tools ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             apt-get -y libfuse-dev open-vm-tools-desktop fuse
@@ -351,7 +351,7 @@ install_python2environment () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing Python 2 environment ...${NC}\n"
+        printf "${GREEN}[+] Installing Python 2 environment ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /tmp
@@ -375,7 +375,7 @@ install_virtualenvwrapper () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing virtualenvwrapper ...${NC}\n"
+        printf "${GREEN}[+] Installing virtualenvwrapper ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             pip3 install virtualenvwrapper
@@ -398,7 +398,7 @@ install_virtualenvwrapper
 ########################
 
 
-printf "${GREEN}[+] Entering installation routine for pentesting tools ...${NC}\n"
+printf "${BLUE}[+] Entering installation routine for pentesting tools ...${NC}\n"
 
 
 # Install EyeWitness first because it clears the log
@@ -409,7 +409,7 @@ install_eyewitness () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then 
-        printf "${BLUE}[*] Installing EyeWitness ...${NC}\n"
+        printf "${GREEN}[+] Installing EyeWitness ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             apt update
@@ -426,7 +426,7 @@ install_eyewitness () {
 install_eyewitness
 
 
-printf "${GREEN}[+] Entering installation routine for pentesting tools ...${NC}\n"
+printf "${BLUE}[+] Entering installation routine for pentesting tools ...${NC}\n"
 
 
 install_adidnsdump () {
@@ -436,7 +436,7 @@ install_adidnsdump () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing adidnsdump ...${NC}\n"
+        printf "${GREEN}[+] Installing adidnsdump ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             pip install git+https://github.com/dirkjanm/adidnsdump#egg=adidnsdump
@@ -455,7 +455,7 @@ install_azure-cli () {
     
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing azure-cli ...${NC}\n"
+        printf "${GREEN}[+] Installing azure-cli ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             apt-get -y install azure-cli
@@ -472,7 +472,7 @@ install_azure_stormspotter () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing Azure Stormspotter ...${NC}\n"
+        printf "${GREEN}[+] Installing Azure Stormspotter ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -492,7 +492,7 @@ install_bloodhound () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing bloodhound ...${NC}\n"
+        printf "${GREEN}[+] Installing bloodhound ...${NC}\n"
         LEFT_TO_DO_NEO4J=1
 
         if [[ $WHATIF -eq 0 ]]; then
@@ -510,7 +510,7 @@ install_certipy () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing Certipy ...${NC}\n"
+        printf "${GREEN}[+] Installing Certipy ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -530,7 +530,7 @@ install_cme_latest () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Downloading latest CME release ...${NC}\n"
+        printf "${GREEN}[+] Downloading latest CME release ...${NC}\n"
         
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -553,7 +553,7 @@ install_cme_stable () {
     check_install_queue
     
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing CME stable ...${NC}\n"
+        printf "${GREEN}[+] Installing CME stable ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             apt-get -y install crackmapexec
@@ -573,7 +573,7 @@ install_donpapi () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing DonPAPI ...${NC}\n"
+        printf "${GREEN}[+] Installing DonPAPI ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -596,7 +596,7 @@ install_empire () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Downloading Empire ...${NC}\n"
+        printf "${GREEN}[+] Downloading Empire ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -617,7 +617,7 @@ install_empire_3.0 () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing Empire 3.0 docker container (~ 1 GB in size) ...${NC}\n"
+        printf "${GREEN}[+] Installing Empire 3.0 docker container (~ 1 GB in size) ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             docker pull bcsecurity/empire:latest
@@ -635,7 +635,7 @@ install_ffuf () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing ffuf ...${NC}\n"
+        printf "${GREEN}[+] Installing ffuf ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             go install github.com/ffuf/ffuf@latest
@@ -652,7 +652,7 @@ install_go-windapsearch () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Downloading @ropnop's latest go-windapsearch release ...${NC}\n"
+        printf "${GREEN}[+] Downloading @ropnop's latest go-windapsearch release ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -674,7 +674,7 @@ install_gobuster () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing gobuster ...${NC}\n"
+        printf "${GREEN}[+] Installing gobuster ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             go install github.com/OJ/gobuster/v3@latest
@@ -691,7 +691,7 @@ install_impacket_bleeding_edge () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing impacket bleeding edge ...${NC}\n"
+        printf "${GREEN}[+] Installing impacket bleeding edge ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -715,7 +715,7 @@ install_impacket_static_binaries () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Downloading some of @ropnop's latest stable impacket static binaries ...${NC}\n"
+        printf "${GREEN}[+] Downloading some of @ropnop's latest stable impacket static binaries ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -740,7 +740,7 @@ install_kerbrute () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Downloading @ropnop's latest kerbrute release ...${NC}\n"
+        printf "${GREEN}[+] Downloading @ropnop's latest kerbrute release ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -762,7 +762,7 @@ install_krbrelayx () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing krbrelayx.py ...${NC}\n"
+        printf "${GREEN}[+] Installing krbrelayx.py ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -794,7 +794,7 @@ install_ldaprelayscan () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing LdapRelayScan ...${NC}\n"
+        printf "${GREEN}[+] Installing LdapRelayScan ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -817,7 +817,7 @@ install_lsassy_and_procdump () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing lsassy, downloading and configuring procdump for lsassy ...${NC}\n"
+        printf "${GREEN}[+] Installing lsassy, downloading and configuring procdump for lsassy ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             python3 -m pip install lsassy
@@ -837,7 +837,7 @@ install_masscan () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing latest masscan ...${NC}\n"
+        printf "${GREEN}[+] Installing latest masscan ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             apt -y install clang git gcc make libpcap-dev
@@ -861,7 +861,7 @@ install_maxpy () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing Max.py ...${NC}\n"
+        printf "${GREEN}[+] Installing Max.py ...${NC}\n"
         LEFT_TO_DO_MAXPY=1
 
         if [[ $WHATIF -eq 0 ]]; then
@@ -885,7 +885,7 @@ install_mitm6 () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing mitm6 ...${NC}\n"
+        printf "${GREEN}[+] Installing mitm6 ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then   
             pip3 install mitm6
@@ -902,7 +902,7 @@ install_nikto () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing Nikto Docker container ...${NC}\n"
+        printf "${GREEN}[+] Installing Nikto Docker container ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -922,7 +922,7 @@ install_nuclei () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing and updating nuclei ...${NC}\n"
+        printf "${GREEN}[+] Installing and updating nuclei ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
@@ -940,7 +940,7 @@ install_pcredz () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing PCredz ...${NC}\n"
+        printf "${GREEN}[+] Installing PCredz ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             apt install -y python3-pip libpcap-dev
@@ -963,7 +963,7 @@ install_powerhub () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then 
-        printf "${BLUE}[*] Installing PowerHub ...${NC}\n"
+        printf "${GREEN}[+] Installing PowerHub ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -988,7 +988,7 @@ install_printnightmare () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing PrintNightmare exploit script from cube0x0 ...${NC}\n"
+        printf "${GREEN}[+] Installing PrintNightmare exploit script from cube0x0 ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -1015,7 +1015,7 @@ install_pyfuscation () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing PyFuscation ...${NC}\n"
+        printf "${GREEN}[+] Installing PyFuscation ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -1038,7 +1038,7 @@ install_pypykatz () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing pypykatz ...${NC}\n"
+        printf "${GREEN}[+] Installing pypykatz ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             pip3 install pypykatz
@@ -1055,7 +1055,7 @@ install_rdp_sec_check () {
     check_install_queue
 
 	if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing rdp-sec-check ...${NC}\n"
+        printf "${GREEN}[+] Installing rdp-sec-check ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             echo | cpan install Encoding::BER
@@ -1077,7 +1077,7 @@ install_responder_bleeding_edge () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing responder bleeding edge ...${NC}\n"
+        printf "${GREEN}[+] Installing responder bleeding edge ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then    
             cd /opt
@@ -1098,7 +1098,7 @@ install_roadrecon () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing ROADrecon ...${NC}\n"
+        printf "${GREEN}[+] Installing ROADrecon ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             pip3 install roadrecon
@@ -1115,7 +1115,7 @@ install_scoutsuite () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing ScoutSuite ...${NC}\n"
+        printf "${GREEN}[+] Installing ScoutSuite ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /opt
@@ -1140,7 +1140,7 @@ install_silentbridge () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing silentbridge ...${NC}\n"
+        printf "${GREEN}[+] Installing silentbridge ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             apt install -y git-core build-essential python3-pip net-tools bridge-utils ethtool dnsutils nmap
@@ -1177,7 +1177,7 @@ install_sqlplus () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing SQL*Plus ...${NC}\n"
+        printf "${GREEN}[+] Installing SQL*Plus ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             cd /tmp
@@ -1203,7 +1203,7 @@ install_windapsearch () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Installing windapsearch ...${NC}\n"
+        printf "${GREEN}[+] Installing windapsearch ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             apt-get -y install python-ldap
@@ -1221,7 +1221,7 @@ install_windapsearch
 ###########################################
 
 
-printf "${GREEN}[+] Entering download routine for red team tooling, scripts, etc. ...${NC}\n"
+printf "${BLUE}[+] Entering download routine for red team tooling, scripts, etc. ...${NC}\n"
 
 
 download_invokemimikatz () {
@@ -1231,7 +1231,7 @@ download_invokemimikatz () {
     check_install_queue
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
-        printf "${BLUE}[*] Downloading latest Invoke-Mimikatz.ps1 from BC-Security ...${NC}\n"
+        printf "${GREEN}[+] Downloading latest Invoke-Mimikatz.ps1 from BC-Security ...${NC}\n"
 
         if [[ $WHATIF -eq 0 ]]; then
             mkdir -p /root/tools/
@@ -1247,14 +1247,14 @@ download_invokemimikatz
 #############################
 
 
-printf "${GREEN}[+] Entering update routine for pre-installed repos ...${NC}\n"
+printf "${BLUE}[+] Entering update routine for pre-installed repos ...${NC}\n"
 
 
 update_kali_prep () {
     # Check if directory exists
     if [[ -d /opt/kali-prep ]]; then
         if [[ $UPDATE_PREINSTALLED_REPOS -eq 1 ]]; then
-            printf "${BLUE}[*] Pull latest changes for kali-prep ...${NC}\n"
+            printf "${GREEN}[+] Pull latest changes for kali-prep ...${NC}\n"
 
             if [[ $WHATIF -eq 0 ]]; then
                 pwd_before_install=$PWD
@@ -1283,7 +1283,7 @@ update_payloadsallthethings () {
     # Check if directory exists
     if [[ -d ~/tools/PayloadsAllTheThings ]]; then
         if [[ $UPDATE_PREINSTALLED_REPOS -eq 1 ]]; then
-            printf "${BLUE}[*] Pull latest changes for PayloadsAllTheThings ...${NC}\n"
+            printf "${GREEN}[+] Pull latest changes for PayloadsAllTheThings ...${NC}\n"
 
             if [[ $WHATIF -eq 0 ]]; then
                 cd ~/tools/PayloadsAllTheThings
@@ -1300,7 +1300,7 @@ update_payloadsallthethings
 update_seclists () {
     if [[ -d ~/tools/SecLists ]]; then
         if [[ $UPDATE_PREINSTALLED_REPOS -eq 1 ]]; then
-            printf "${BLUE}[*] Pull latest changes for SecLists ...${NC}\n"
+            printf "${GREEN}[+] Pull latest changes for SecLists ...${NC}\n"
 
             if [[ $WHATIF -eq 0 ]]; then
                 cd ~/tools/SecLists
@@ -1319,7 +1319,7 @@ update_seclists
 ###############################
 
 
-printf "${YELLOW}\n\n[+] LEFT TO DO${NC}\n"
+printf "${YELLOW}\n\n[+] LEFT TO DO FOR YOU${NC}\n"
 
 
 if [[ $LEFT_TO_DO_NEO4J -eq 1 ]]; then
@@ -1330,3 +1330,6 @@ fi
 if [[ $LEFT_TO_DO_MAXPY -eq 1 ]]; then
     printf ' - Add neo4j DB password to /opt/Max/max.py\n\n'
 fi
+
+
+printf "${GREEN}\n\nDone!${NC}\n"
