@@ -1261,7 +1261,7 @@ update_kali_prep () {
                 # merge
                 git merge '@{u}'
                 
-                chmod +x kali-prep.zsh
+                chmod +x /opt/kali-prep/kali-prep.zsh
 
                 cd $PWD
             fi
