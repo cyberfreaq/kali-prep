@@ -150,7 +150,7 @@ function print_usage_warning {
         printf "[!] If you have installed kali-prep via the -i switch, you can ignore this warning!\n"
         printf "[!] Make sure to run the script with '${RED}source kali-prep.zsh${NC}' instead of './kali-prep.zsh'!\n"
         printf "[!] If you ignore this warning, stuff will likely break!\n"
-        printf "[!] Furthermore, it is recommended to tee the script output for troubleshooting: source kali-prep.zsh | tee log.out\n"
+        printf "[!] Furthermore, it is recommended to tee the script output for troubleshooting: source kali-prep.zsh | tee kali-prep.log\n"
         read -s -k $'?Press any key to proceed or Strg+C to cancel ...\n'
     fi
 }
