@@ -19,6 +19,16 @@ kali-prep -t base
 ```
 
 ## Usage
+### Recommended usage
+- `-n`        suppresses usage warning
+- `-t`        installs selected modules/tools
+- `| tee ...` generates log file  
+
+```
+kali-prep -n -t base,external | tee /tmp/kali-prep.log
+```
+
+### Other examples
 Show help:  
 ```
 kali-prep -h
