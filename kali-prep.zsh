@@ -788,7 +788,7 @@ install_krbrelayx () {
         fi
     fi
 }
-install_krbrelay
+install_krbrelayx
 
 
 install_ldaprelayscan () {
