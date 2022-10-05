@@ -102,6 +102,7 @@ windapsearch                -                       Superseded by go-windapsearc
     exit 1
 }
 
+
 function install_kali_prep {
     printf "${BLUE}[*] Installing kali-prep ... ${NC}"
 
@@ -115,6 +116,7 @@ function install_kali_prep {
 
     exit 1
 }
+
 
 function clone_repos {
     printf "${BLUE}[*] Cloning repositories ... ${NC}\n"
@@ -134,6 +136,7 @@ function clone_repos {
 
     exit 1
 }
+
 
 # if no input argument found, exit the script with usage
 if [[ ${#} -eq 0 ]]; then
@@ -183,6 +186,7 @@ do
     esac
 done
 
+
 # Print verbose messages
 function print_verbose {
    local MESSAGE="${@}"
@@ -190,6 +194,7 @@ function print_verbose {
       echo "${YELLOW}Verbose: ${MESSAGE}${NC}"
    fi
 }
+
 
 # Print usage warning
 if [[ $NOWARN -eq 0 ]]; then
@@ -199,6 +204,7 @@ if [[ $NOWARN -eq 0 ]]; then
     printf "[!] Furthermore, it is recommended to tee the script output for troubleshooting: source kali-prep.zsh | tee log.out\n"
     read -s -k $'?Press any key to proceed or Strg+C to cancel ...\n'
 fi
+
 
 # Check if tool is to be installed
 check_install_queue () {
@@ -219,6 +225,7 @@ check_install_queue () {
     done
 }
 
+
 ###################
 ## Install TEMPLATE
 ###################
@@ -237,6 +244,7 @@ install_template () {
         fi
     fi
 }
+
 
 ########################################
 ## Install basic stuff and prerequisites
