@@ -18,11 +18,18 @@ WHATIF=0
 ## Color Coding
 # https://www.shellhacks.com/bash-colors/
 
-BLUE='\033[1;34m'
-YELLOW='\033[1;33m'
-RED='\033[1;31m'
-GREEN='\033[1;32m'
+# NORMAL
+BLUE='\033[0;34m'
+YELLOW='\033[0;33m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
 NC='\033[0m' # No Color
+
+# BOLD
+BLUEB='\033[1;34m'
+YELLOWB='\033[1;33m'
+REDB='\033[1;31m'
+GREENB='\033[1;32m'
 
 
 function usage {
