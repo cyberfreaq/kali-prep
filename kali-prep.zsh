@@ -137,6 +137,16 @@ function clone_repos {
     exit 1
 }
 
+function print_usage_warning {
+    if [[ $NOWARN -eq 0 ]]; then
+        printf "[!] If you have installed kali-prep via the -i switch, you can ignore this warning!\n"
+        printf "[!] Make sure to run the script with '${RED}source kali-prep.zsh${NC}' instead of './kali-prep.zsh'!\n"
+        printf "[!] If you ignore this warning, stuff will likely break!\n"
+        printf "[!] Furthermore, it is recommended to tee the script output for troubleshooting: source kali-prep.zsh | tee log.out\n"
+        read -s -k $'?Press any key to proceed or Strg+C to cancel ...\n'
+    fi
+}
+
 
 # if no input argument found, exit the script with usage
 if [[ ${#} -eq 0 ]]; then
@@ -145,7 +155,7 @@ fi
 
 
 # Parse arguments
-while getopts hlnt:uv flag
+while getopts chilnt:uvw flag
 do
     case "${flag}" in
         c)
@@ -173,6 +183,9 @@ do
             echo ''
             echo "Tools to be installed: ${TOOLS[@]}"
             echo ''
+
+            print_usage_warning
+
             ;;
         u)
             UPDATE_PREINSTALLED_REPOS=1
@@ -194,16 +207,6 @@ function print_verbose {
       echo "${YELLOW}Verbose: ${MESSAGE}${NC}"
    fi
 }
-
-
-# Print usage warning
-if [[ $NOWARN -eq 0 ]]; then
-    printf "[!] If you have installed kali-prep via the -i switch, you can ignore this warning!\n"
-    printf "[!] Make sure to run the script with '${RED}source kali-prep.zsh${NC}' instead of './kali-prep.zsh'!\n"
-    printf "[!] If you ignore this warning, stuff will likely break!\n"
-    printf "[!] Furthermore, it is recommended to tee the script output for troubleshooting: source kali-prep.zsh | tee log.out\n"
-    read -s -k $'?Press any key to proceed or Strg+C to cancel ...\n'
-fi
 
 
 # Check if tool is to be installed
