@@ -108,7 +108,7 @@ windapsearch                -                       Superseded by go-windapsearc
 # Known issues
 - Somewhere during the installation Kali asks for a password for a new "Default" keyring. I think this is caused by one of the tools from the azure module
 
-## Todo
+# TODO
 - [ ] Add jconsole
 - [ ] Download and unzip Processhacker
 - [ ] Install EyeWitness via apt?
