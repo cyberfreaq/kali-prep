@@ -78,21 +78,21 @@ cme-latest                  -                       Kali already has the latest 
 empire                      -                       Original repo - not maintained anymore
 empire30                    -                       New repo, but not used during audits right now
 donpapi                     all, internal           
-eyewitness                  all, external, internal
-ffuf                        all, external, web
+eyewitness                  all, internal
+ffuf                        all, web
 go-windapsearch             all, internal
-gobuster                    all, external, web
+gobuster                    all, web
 impacket-bleeding-edge      all, internal           workon: impacket
 impacket-static-binaries    all, internal           ~# getuserspns | ~# gettgt
 invokemimikatz              all, internal           path: /root/tools/Invoke-Mimikatz.ps1
 kerbrute                    all, internal
 krbrelayx                   all, internal           ~# addspn | ~# dnstool | ~# krbrelayx | ~# printerbug
 ldaprelayscan               all, internal           
-masscan                     all, external, internal
+masscan                     all, external
 maxpy                       all, internal           ~# max
 mitm6                       all, internal
 nikto                       -                       Not in use right now; Installs docker image.
-nuclei                      all, external, web 
+nuclei                      all, web 
 lsassy-and-procdump         all, internal           ~# lsassy ... --procdump /root/tools/procdump/procdump.exe
 pcredz                      all, internal           
 powerhub                    all, internal           workon: powerhub
