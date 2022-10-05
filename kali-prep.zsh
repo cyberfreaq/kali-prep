@@ -83,7 +83,7 @@ eyewitness                  all, internal
 ffuf                        all, web
 go-windapsearch             all, internal
 gobuster                    all, web
-impacket-bleeding-edge      all, internal           workon: impacket
+impacket-bleeding-edge      all, internal           workon: impacket | ~# ntlmrelayx | ~# ...
 impacket-static-binaries    all, internal           ~# getuserspns | ~# gettgt
 invokemimikatz              all, internal           path: /root/tools/Invoke-Mimikatz.ps1
 kerbrute                    all, internal
