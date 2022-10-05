@@ -254,7 +254,7 @@ install_template () {
 ########################################
 
 
-printf "${BLUE}[+] Entering installation routine for base module ...${NC}\n"
+printf "${BLUE}[i] Entering installation routine for base module ...${NC}\n"
 
 
 install_basic_packages () {
@@ -398,7 +398,7 @@ install_virtualenvwrapper
 ########################
 
 
-printf "${BLUE}[+] Entering installation routine for pentesting tools ...${NC}\n"
+printf "${BLUE}[i] Entering installation routine for pentesting tools ...${NC}\n"
 
 
 # Install EyeWitness first because it clears the log
@@ -426,7 +426,7 @@ install_eyewitness () {
 install_eyewitness
 
 
-printf "${BLUE}[+] Entering installation routine for pentesting tools ...${NC}\n"
+printf "${BLUE}[i] Entering installation routine for pentesting tools ...${NC}\n"
 
 
 install_adidnsdump () {
@@ -1221,7 +1221,7 @@ install_windapsearch
 ###########################################
 
 
-printf "${BLUE}[+] Entering download routine for red team tooling, scripts, etc. ...${NC}\n"
+printf "${BLUE}[i] Entering download routine for red team tooling, scripts, etc. ...${NC}\n"
 
 
 download_invokemimikatz () {
@@ -1247,7 +1247,7 @@ download_invokemimikatz
 #############################
 
 
-printf "${BLUE}[+] Entering update routine for pre-installed repos ...${NC}\n"
+printf "${BLUE}[i] Entering update routine for pre-installed repos ...${NC}\n"
 
 
 update_kali_prep () {
