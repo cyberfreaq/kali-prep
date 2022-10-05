@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 # predefine constants
+ADD_SHORTCUT=0
 CURRENT_TOOL=""
 INSTALL_PREREQUISITES=0
 INSTALL_TOOL=0
@@ -43,6 +44,7 @@ function usage {
         echo '   -i          Install this script to /opt/kali-prep and add "kali-prep" to /usr/local/bin'
         echo '   -l          List available tools.'
         echo '   -n          Show no warning when executing the script.'
+        echo '   -s          Use with -i switch. Adds shortcut "kp" for kali-prep to /usr/local/bin'.
         echo '   -t TOOLS    Comma-separated list of modules and/or tools to install (e.g. -t base,external,roadrecon).'
         echo '               *IMPORTANT*: The "base" module has to be installed at least once!'
         echo '   -u          Update kali-prep and other pre-installed repos (SecLists, PayloadsAllTheThings)'
@@ -115,9 +117,17 @@ function install_kali_prep {
     printf "${GREEN}[+] Installing kali-prep ... ${NC}"
 
     if [[ $WHATIF -eq 0 ]]; then
+        echo 'Adding /usr/local/bin/kali-prep to call the script with "kali-prep"'
         echo '#!/bin/zsh' > /usr/local/bin/kali-prep
         echo 'source /opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kali-prep
         chmod +x /usr/local/bin/kali-prep
+
+        if [[ $ADD_SHORTCUT -eq 1 ]]; then
+            echo 'Adding /usr/local/bin/kp to call the script with "kp"'
+            echo '#!/bin/zsh' > /usr/local/bin/kp
+            echo 'source /opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kp
+            chmod +x /usr/local/bin/kp
+        fi
     fi
 
     printf "${BLUE}Done!${NC}\n"
@@ -163,7 +173,7 @@ fi
 
 
 # Parse arguments
-while getopts chilnt:uvw flag
+while getopts chilnst:uvw flag
 do
     case "${flag}" in
         c)
@@ -172,6 +182,9 @@ do
         h)
 	        usage
             ;;        
+        s)
+            ADD_SHORTCUT=1
+            ;;
         i)
             install_kali_prep
 	        ;;
