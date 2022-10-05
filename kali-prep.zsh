@@ -106,15 +106,11 @@ windapsearch                -                       Superseded by go-windapsearc
 function install_kali_prep {
     printf "${BLUE}[*] Installing kali-prep ... ${NC}"
 
-    pwd_before_install=$PWD
-
     if [[ $WHATIF -eq 0 ]]; then
         echo '#!/bin/zsh' > /usr/local/bin/kali-prep
         echo 'source /opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kali-prep
         chmod +x /usr/local/bin/kali-prep
     fi
-
-    cd $PWD
 
     printf "${BLUE}Done!${NC}\n"
 
@@ -1261,8 +1257,19 @@ update_kali_prep () {
             printf "${BLUE}[*] Pull latest changes for kali-prep ...${NC}\n"
 
             if [[ $WHATIF -eq 0 ]]; then
+                pwd_before_install=$PWD
                 cd /opt/kali-prep
-                git pull
+
+                # fetch remote updates
+                git fetch
+
+                # ignore local changes
+                git reset --hard HEAD
+
+                # merge
+                git merge '@{u}'
+
+                cd $PWD
             fi
         fi
     else
