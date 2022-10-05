@@ -46,6 +46,16 @@ Show help:
 ```
 kali-prep -h
 ```
+
+List available modules/tools
+```
+kali-prep -l
+```
+
+Use shortcut to list tools:
+```
+kp -l
+```
   
 Install tools for internal engagements plus ffuf:  
 ```
