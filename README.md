@@ -106,9 +106,7 @@ windapsearch                -                       Superseded by go-windapsearc
 ```
 
 # Known issues
-- "printf" and "read" command appear in wrong order in the warning message when running the script
-- Somewhere during the installation Kali asks for a password for a new "Default" keyring
-  - Workaround: apt -y install seahorse; open application "Passwords and Keys" and create new "Password Keyring" with name "Default" (choose any pw you like)
+- Somewhere during the installation Kali asks for a password for a new "Default" keyring. I think this is caused by one of the tools from the azure module
 
 ## Todo
 - [ ] Add jconsole
