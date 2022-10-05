@@ -116,7 +116,7 @@ function install_kali_prep {
     printf "${GREEN}[+] Installing kali-prep ... ${NC}\n"
 
     if [[ $WHATIF -eq 0 ]]; then
-        echo 'Adding /usr/local/bin/kp. You can call the script now with "kali-prep".'
+        echo 'Adding /usr/local/bin/kali-prep. You can call the script now with "kali-prep".'
         echo '#!/bin/zsh' > /usr/local/bin/kali-prep
         echo 'source /opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kali-prep
         chmod +x /usr/local/bin/kali-prep
