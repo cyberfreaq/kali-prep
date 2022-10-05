@@ -5,28 +5,35 @@ Script to install tooling on a fresh Kali image/snapshot
 - Needs Kali image with ZSH
 - Has to be run as root
 
-## Installation
+## Installation  
+  
+**IMPORTANT**: Don't skip any of the installation steps. They are mandatory!  
+
+Clone repo:  
 ```
 cd /opt
 git clone https://github.com/cyberfreaq/kali-prep.git
 chmod +x /opt/kali-prep/kali-prep.zsh
+```
+
+Install kali-prep:
+```
 /opt/kali-prep/kali-prep.zsh -i
 ```
 
-**IMPORTANT**: Install base module (basic packages and prerequisites for other tools):  
+Install base module (basic packages and prerequisites for other tools):  
 ```
 kali-prep -t base
 ```
 
 ## Usage
 ### Recommended usage
-- `-n`        suppress usage warning
 - `-t`        install selected modules/tools
 - `| tee ...` generate log file  
 
 Install tools:  
 ```
-kali-prep -n -t external,web | tee /tmp/kali-prep.log
+kali-prep -t external,web | tee /tmp/kali-prep.log
 ```
 
 Check log:  

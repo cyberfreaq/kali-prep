@@ -1,14 +1,12 @@
 #!/bin/zsh
 
 # predefine constants
-ADD_SHORTCUT=0
 CURRENT_TOOL=""
 INSTALL_PREREQUISITES=0
 INSTALL_TOOL=0
 LEFT_TO_DO=0
 LEFT_TO_DO_MAXPY=0
 LEFT_TO_DO_NEO4J=0
-NOWARN=0
 TAGS=()
 TOOLNAME=$0
 TOOLS=""
@@ -35,7 +33,7 @@ GREENB='\033[1;32m'
 
 
 function usage {
-        echo "Usage: $TOOLNAME [-n] [-t TOOLS] | tee kali-prep.log" 2>&1
+        echo "Usage: $TOOLNAME [-t TOOLS] | tee kali-prep.log" 2>&1
         echo '*) Script for installing red team tooling'
         echo '*) Requires ZSH'
         echo ''
@@ -43,7 +41,6 @@ function usage {
         echo '   -h          Show this help message.'
         echo '   -i          Install this script to /opt/kali-prep and add "kali-prep" and "kp" to /usr/local/bin'
         echo '   -l          List available tools.'
-        echo '   -n          Show no warning when executing the script.'
         echo '   -t TOOLS    Comma-separated list of modules and/or tools to install (e.g. -t base,external,roadrecon).'
         echo '               *IMPORTANT*: The "base" module has to be installed at least once!'
         echo '   -u          Update kali-prep and other pre-installed repos (SecLists, PayloadsAllTheThings)'
@@ -152,16 +149,6 @@ function clone_repos {
     exit 1
 }
 
-function print_usage_warning {
-    if [[ $NOWARN -eq 0 ]]; then
-        printf "[!] If you have installed kali-prep via the -i switch, you can ignore this warning!\n"
-        printf "[!] Make sure to run the script with '${RED}source kali-prep.zsh${NC}' instead of './kali-prep.zsh'!\n"
-        printf "[!] If you ignore this warning, stuff will likely break!\n"
-        printf "[!] Furthermore, it is recommended to tee the script output for troubleshooting: source kali-prep.zsh | tee kali-prep.log\n"
-        read -s -k $'?Press any key to proceed or Strg+C to cancel ...\n'
-    fi
-}
-
 
 # if no input argument found, exit the script with usage
 if [[ ${#} -eq 0 ]]; then
@@ -170,7 +157,7 @@ fi
 
 
 # Parse arguments
-while getopts chilnt:uvw flag
+while getopts chilt:uvw flag
 do
     case "${flag}" in
         c)
@@ -185,22 +172,12 @@ do
         l)
             list_tools
             ;;
-        n) 
-            NOWARN=1
-            if [[ ${#} -eq 1 ]]; then
-                printf "${RED}\n[-] You have to specify at least one module!${NC}\n\n"
-                usage
-            fi
-            ;;
         t)
             # Split -t input parameter with delimiter ',' into an array
             IFS="," read -A TOOLS <<< ${OPTARG}
             echo ''
             echo "Tools to be installed: ${TOOLS[@]}"
             echo ''
-
-            print_usage_warning
-
             ;;
         u)
             UPDATE_PREINSTALLED_REPOS=1
