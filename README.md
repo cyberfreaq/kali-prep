@@ -8,7 +8,7 @@ Script to install tooling on a fresh Kali image/snapshot
 ## Installation
 ```
 cd /opt
-git clone git@github.com:cyberfreaq/kali-prep.git
+git clone https://github.com/cyberfreaq/kali-prep.git
 chmod +x /opt/kali-prep/kali-prep.zsh
 /opt/kali-prep/kali-prep.zsh -i
 ```
