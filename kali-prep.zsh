@@ -4,6 +4,7 @@
 CURRENT_TOOL=""
 INSTALL_PREREQUISITES=0
 INSTALL_TOOL=0
+LEFT_TO_DO=0
 LEFT_TO_DO_MAXPY=0
 LEFT_TO_DO_NEO4J=0
 NOWARN=0
@@ -261,7 +262,7 @@ install_template () {
 ########################################
 
 
-printf "${BLUE}[i] Entering installation routine for base module ...${NC}\n"
+printf "${BLUEB}[i] Entering installation routine for base module ...${NC}\n"
 
 
 install_basic_packages () {
@@ -405,7 +406,7 @@ install_virtualenvwrapper
 ########################
 
 
-printf "${BLUE}[i] Entering installation routine for pentesting tools ...${NC}\n"
+printf "${BLUEB}[i] Entering installation routine for pentesting tools (phase 1) ...${NC}\n"
 
 
 # Install EyeWitness first because it clears the log
@@ -433,7 +434,7 @@ install_eyewitness () {
 install_eyewitness
 
 
-printf "${BLUE}[i] Entering installation routine for pentesting tools ...${NC}\n"
+printf "${BLUEB}[i] Entering installation routine for pentesting tools (phase 2) ...${NC}\n"
 
 
 install_adidnsdump () {
@@ -500,6 +501,7 @@ install_bloodhound () {
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
         printf "${GREEN}[+] Installing bloodhound ...${NC}\n"
+        LFET_TO_DO=1
         LEFT_TO_DO_NEO4J=1
 
         if [[ $WHATIF -eq 0 ]]; then
@@ -869,6 +871,7 @@ install_maxpy () {
 
     if [[ $INSTALL_TOOL -eq 1 ]]; then
         printf "${GREEN}[+] Installing Max.py ...${NC}\n"
+        LFET_TO_DO=1
         LEFT_TO_DO_MAXPY=1
 
         if [[ $WHATIF -eq 0 ]]; then
@@ -1228,7 +1231,7 @@ install_windapsearch
 ###########################################
 
 
-printf "${BLUE}[i] Entering download routine for red team tooling, scripts, etc. ...${NC}\n"
+printf "${BLUEB}[i] Entering download routine for red team tooling, scripts, etc. ...${NC}\n"
 
 
 download_invokemimikatz () {
@@ -1254,7 +1257,7 @@ download_invokemimikatz
 #############################
 
 
-printf "${BLUE}[i] Entering update routine for pre-installed repos ...${NC}\n"
+printf "${BLUEB}[i] Entering update routine for pre-installed repos ...${NC}\n"
 
 
 update_kali_prep () {
@@ -1325,16 +1328,17 @@ update_seclists
 ## What is left to do manually?
 ###############################
 
+if [[ $LEFT_TO_DO -eq 1 ]]; then
+    printf "${YELLOW}\n\n[i] END OF SCRIPT - LEFT TO DO FOR YOU${NC}\n"
 
-printf "${YELLOW}\n\n[+] END OF SCRIPT - LEFT TO DO FOR YOU${NC}\n"
+    if [[ $LEFT_TO_DO_NEO4J -eq 1 ]]; then
+        printf ' - Change neo4j DB password\n'
+        printf '   https://stealingthe.network/quick-guide-to-installing-bloodhound-in-kali-rolling/\n\n'
+    fi
 
-
-if [[ $LEFT_TO_DO_NEO4J -eq 1 ]]; then
-    printf ' - Change neo4j DB password\n'
-    printf '   https://stealingthe.network/quick-guide-to-installing-bloodhound-in-kali-rolling/\n\n'
+    if [[ $LEFT_TO_DO_MAXPY -eq 1 ]]; then
+        printf ' - Add neo4j DB password to /opt/Max/max.py\n\n'
+    fi
+else
+    printf "${YELLOW}\n\n[i] END OF SCRIPT${NC}\n" 
 fi
-
-if [[ $LEFT_TO_DO_MAXPY -eq 1 ]]; then
-    printf ' - Add neo4j DB password to /opt/Max/max.py\n\n'
-fi
-
