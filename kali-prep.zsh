@@ -118,7 +118,7 @@ function install_kali_prep {
         echo 'source /opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kali-prep
         chmod +x /usr/local/bin/kali-prep
 
-        echo 'Adding /usr/local/bin/kp. You can call the script now with"kp".'
+        echo 'Adding shortcut for "kali-prep -l" to /usr/local/bin/kp.'
         echo '#!/bin/zsh' > /usr/local/bin/kp
         echo '/opt/kali-prep/kali-prep.zsh -l' >> /usr/local/bin/kp
         chmod +x /usr/local/bin/kp
