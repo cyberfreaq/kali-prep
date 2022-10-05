@@ -14,20 +14,30 @@ chmod +x /opt/kali-prep/kali-prep.zsh
 ```
 
 **IMPORTANT**: Install base module (basic packages and prerequisites for other tools):  
-`kali-prep -t base`
+```
+kali-prep -t base
+```
 
 ## Usage
 Show help:  
-`kali-prep -h`  
+```
+kali-prep -h
+```
   
 Install tools for internal engagements plus ffuf:  
-`kali-prep -t internal,ffuf`  
+```
+kali-prep -t internal,ffuf
+```
   
 Dry-run with -w switch (What-If) - this prints out install messages without changing anything on your system:
-`kali-prep -t base,internal,external -w`  
+```
+kali-prep -t base,internal,external -w
+```
 
 Print verbose messages:  
-`kali-prep -t base,internal,external -v`  
+```
+kali-prep -t base,internal,external -v
+```
 
 # Known Issues
 - "printf" and "read" command appear in wrong order in the warning message when running the script
