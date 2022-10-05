@@ -41,10 +41,9 @@ function usage {
         echo ''
         echo '   -c          Clone PayloadsAllTheThings and SecLists to ~/tools'
         echo '   -h          Show this help message.'
-        echo '   -i          Install this script to /opt/kali-prep and add "kali-prep" to /usr/local/bin'
+        echo '   -i          Install this script to /opt/kali-prep and add "kali-prep" and "kp" to /usr/local/bin'
         echo '   -l          List available tools.'
         echo '   -n          Show no warning when executing the script.'
-        echo '   -s          Use with -i switch. Adds shortcut "kp" for kali-prep to /usr/local/bin'.
         echo '   -t TOOLS    Comma-separated list of modules and/or tools to install (e.g. -t base,external,roadrecon).'
         echo '               *IMPORTANT*: The "base" module has to be installed at least once!'
         echo '   -u          Update kali-prep and other pre-installed repos (SecLists, PayloadsAllTheThings)'
@@ -114,23 +113,21 @@ windapsearch                -                       Superseded by go-windapsearc
 
 
 function install_kali_prep {
-    printf "${GREEN}[+] Installing kali-prep ... ${NC}"
+    printf "${GREEN}[+] Installing kali-prep ... ${NC}\n"
 
     if [[ $WHATIF -eq 0 ]]; then
-        echo 'Adding /usr/local/bin/kali-prep to call the script with "kali-prep"'
+        echo 'Adding /usr/local/bin/kp. You can call the script now with "kali-prep".'
         echo '#!/bin/zsh' > /usr/local/bin/kali-prep
         echo 'source /opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kali-prep
         chmod +x /usr/local/bin/kali-prep
 
-        if [[ $ADD_SHORTCUT -eq 1 ]]; then
-            echo 'Adding /usr/local/bin/kp to call the script with "kp"'
-            echo '#!/bin/zsh' > /usr/local/bin/kp
-            echo 'source /opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kp
-            chmod +x /usr/local/bin/kp
-        fi
+        echo 'Adding /usr/local/bin/kp. You can call the script now with"kp".'
+        echo '#!/bin/zsh' > /usr/local/bin/kp
+        echo 'source /opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kp
+        chmod +x /usr/local/bin/kp
     fi
 
-    printf "${BLUE}Done!${NC}\n"
+    printf "${GREEN}[+] Installing kali-prep ... Done!${NC}\n"
 
     exit 1
 }
@@ -173,7 +170,7 @@ fi
 
 
 # Parse arguments
-while getopts chilnst:uvw flag
+while getopts chilnt:uvw flag
 do
     case "${flag}" in
         c)
@@ -182,9 +179,6 @@ do
         h)
 	        usage
             ;;        
-        s)
-            ADD_SHORTCUT=1
-            ;;
         i)
             install_kali_prep
 	        ;;
