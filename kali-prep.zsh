@@ -1329,7 +1329,7 @@ update_seclists
 ###############################
 
 if [[ $LEFT_TO_DO -eq 1 ]]; then
-    printf "${YELLOW}\n\n[i] END OF SCRIPT - LEFT TO DO FOR YOU${NC}\n"
+    printf "${YELLOW}\n[i] END OF SCRIPT - LEFT TO DO FOR YOU${NC}\n"
 
     if [[ $LEFT_TO_DO_NEO4J -eq 1 ]]; then
         printf ' - Change neo4j DB password\n'
@@ -1340,5 +1340,5 @@ if [[ $LEFT_TO_DO -eq 1 ]]; then
         printf ' - Add neo4j DB password to /opt/Max/max.py\n\n'
     fi
 else
-    printf "${YELLOW}\n\n[i] END OF SCRIPT${NC}\n" 
+    printf "${YELLOW}\n[i] END OF SCRIPT${NC}\n" 
 fi
