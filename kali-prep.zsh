@@ -39,7 +39,7 @@ function usage {
         echo ''
         echo '   -c          Clone PayloadsAllTheThings and SecLists to ~/tools'
         echo '   -h          Show this help message.'
-        echo '   -i          Install this script to /opt/kali-prep and add "kali-prep" and "kp" to /usr/local/bin'
+        echo '   -i          Install this script to /opt/kali-prep and add "kali-prep" to /usr/local/bin'
         echo '   -l          List available tools.'
         echo '   -t TOOLS    Comma-separated list of modules and/or tools to install (e.g. -t base,external,roadrecon).'
         echo '               *IMPORTANT*: The "base" module has to be installed at least once!'
@@ -120,7 +120,7 @@ function install_kali_prep {
 
         echo 'Adding /usr/local/bin/kp. You can call the script now with"kp".'
         echo '#!/bin/zsh' > /usr/local/bin/kp
-        echo 'source /opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kp
+        echo '/opt/kali-prep/kali-prep.zsh -l' >> /usr/local/bin/kp
         chmod +x /usr/local/bin/kp
     fi
 

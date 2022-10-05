@@ -50,11 +50,10 @@ kali-prep -h
 List available modules/tools
 ```
 kali-prep -l
-```
 
-Use shortcut to list tools:
-```
-kp -l
+# or
+
+kp
 ```
   
 Install tools for internal engagements plus ffuf:  
