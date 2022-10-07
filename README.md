@@ -21,17 +21,17 @@ Install kali-prep:
 /opt/kali-prep/kali-prep.zsh -i
 ```
 
-Install base module (basic packages and prerequisites for other tools):  
+## Usage
+### Recommended usage
+Install base module once (basic packages and prerequisites for other tools):  
 ```
 kali-prep -t base
 ```
 
-## Usage
-### Recommended usage
+Install the modules/tools you need:
 - `-t`        install selected modules/tools
 - `| tee ...` generate log file  
 
-Install tools:  
 ```
 kali-prep -t external,web | tee /tmp/kali-prep.log
 ```
@@ -51,7 +51,7 @@ List available modules/tools
 ```
 kali-prep -l
 
-# or
+# or shortcut "kan plan" (actually "kali-prep") 
 
 kp
 ```
@@ -130,7 +130,10 @@ windapsearch                -                       Superseded by go-windapsearc
 # Known issues
 - Somewhere during the installation Kali asks for a password for a new "Default" keyring. I think this is caused by one of the tools from the azure module
 
-# TODO
+# Roadmap
+- [ ] Add a check if a tool is already installed
+- [ ] Add update routines for installed tools(?)
+- [ ] Modularize script (folder "tools" with an entry per tool)
 - [ ] Add jconsole
 - [ ] Download and unzip Processhacker
 - [ ] Install EyeWitness via apt?
