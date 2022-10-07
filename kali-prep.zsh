@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# load ~/.zshrc for mkvirtualenv
+source ~/.zshrc
+
 # predefine constants
 CURRENT_TOOL=""
 INSTALL_PREREQUISITES=0
@@ -115,7 +118,7 @@ function install_kali_prep {
     if [[ $WHATIF -eq 0 ]]; then
         echo 'Adding /usr/local/bin/kali-prep. You can call the script now with "kali-prep".'
         echo '#!/bin/zsh' > /usr/local/bin/kali-prep
-        echo 'source /opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kali-prep
+        echo '/opt/kali-prep/kali-prep.zsh "$@"' >> /usr/local/bin/kali-prep
         chmod +x /usr/local/bin/kali-prep
 
         echo 'Adding shortcut for "kali-prep -l" to /usr/local/bin/kp.'
