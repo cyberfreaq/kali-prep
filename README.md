@@ -6,6 +6,7 @@ Script to install tooling on a fresh Kali image/snapshot
 - Has to be run as root
 
 ## Installation  
+### Fresh installation
   
 **IMPORTANT**: Don't skip any of the installation steps. They are mandatory!  
 
@@ -19,6 +20,11 @@ chmod +x /opt/kali-prep/kali-prep.zsh
 Install kali-prep:
 ```
 /opt/kali-prep/kali-prep.zsh -i
+```
+
+### Update existing installation
+```
+kali-prep.zsh -u
 ```
 
 ## Usage
@@ -132,6 +138,7 @@ windapsearch                -                       Superseded by go-windapsearc
 
 # Roadmap
 - [ ] Add a check if a tool is already installed
+- [ ] Automatically activate and deactivate virtual environments when running a tool
 - [ ] Add update routines for installed tools(?)
 - [ ] Modularize script (folder "tools" with an entry per tool)
 - [ ] Add jconsole

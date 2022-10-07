@@ -5,7 +5,6 @@ source ~/.zshrc
 
 # predefine constants
 CURRENT_TOOL=""
-INSTALL_PREREQUISITES=0
 INSTALL_TOOL=0
 LEFT_TO_DO=0
 LEFT_TO_DO_MAXPY=0
