@@ -137,6 +137,7 @@ windapsearch                -                       Superseded by go-windapsearc
 - Somewhere during the installation Kali asks for a password for a new "Default" keyring. I think this is caused by one of the tools from the azure module
 
 # Roadmap
+- [ ] Download https://github.com/NotSoSecure/password_cracking_rules/raw/master/OneRuleToRuleThemAll.rule
 - [ ] Add a check if a tool is already installed
 - [ ] Automatically activate and deactivate virtual environments when running a tool
 - [ ] Add update routines for installed tools(?)
