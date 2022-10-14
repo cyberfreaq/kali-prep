@@ -54,7 +54,7 @@ function usage {
 
 function list_tools {
     echo '
-TOOLS                       MODULES                 FURTHER INFORMATION (workon: venv | ~# cmd | path: path)
+TOOLS                       MODULES                 FURTHER INFORMATION (workon venv | ~# cmd | path: path)
 =========================   ====================    ========================================================
 basics                      base                    apt-get -y install apt-transport-https bridge-utils \
                                                     build-essential dnsutils ethtool git-core golang jq \
@@ -66,7 +66,7 @@ open_vm_tools               -                       Not necessary when using off
 python2environment          base
 virtualenvwrapper           base                    Requires ZSH; Adds stuff to ~/.zshrc
 
-TOOLS                       MODULES                 FURTHER INFORMATION (workon: venv | ~# cmd | path: path)
+TOOLS                       MODULES                 FURTHER INFORMATION (workon venv | ~# cmd | path: path)
 =========================   ====================    ========================================================
 adidnsdump                  all, internal
 azure-cli                   all, azure
@@ -82,7 +82,7 @@ eyewitness                  all, internal
 ffuf                        all, web
 go-windapsearch             all, internal
 gobuster                    all, web
-impacket-bleeding-edge      all, internal           workon: impacket | ~# ntlmrelayx | ~# ...
+impacket-bleeding-edge      all, internal           workon impacket | ~# ntlmrelayx | ~# ...
 impacket-static-binaries    all, internal           ~# getuserspns | ~# gettgt
 invokemimikatz              all, internal           path: /root/tools/Invoke-Mimikatz.ps1
 kerbrute                    all, internal
@@ -95,14 +95,14 @@ nikto                       -                       Not in use right now; Instal
 nuclei                      all, web 
 lsassy-and-procdump         all, internal           ~# lsassy ... --procdump /root/tools/procdump/procdump.exe
 pcredz                      all, internal           
-powerhub                    all, internal           workon: powerhub
-printnightmare              all, internal           workon: printnightmare | ~# cve-2021-1675
+powerhub                    all, internal           workon powerhub
+printnightmare              all, internal           workon printnightmare | ~# cve-2021-1675
 pyfuscation                 -                       Not in use right now
 pypykatz                    all, internal 
 rdp-sec-check               all, internal 
 responder-bleeding-edge     all, internal           ~# responder-dev
 roadrecon                   all, azure 
-scoutsuite                  all, azure              workon: scoutsuite
+scoutsuite                  all, azure              workon scoutsuite
 silentbridge                all, internal 
 sqlplus                     all, internal
 windapsearch                -                       Superseded by go-windapsearch
