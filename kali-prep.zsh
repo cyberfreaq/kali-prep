@@ -43,7 +43,7 @@ function usage {
         echo '   -h          Show this help message.'
         echo '   -i          Install this script to /opt/kali-prep and add "kali-prep" to /usr/local/bin'
         echo '   -l          List available tools.'
-        echo '   -t TOOLS    Comma-separated list of modules and/or tools to install (e.g. -t base,external,roadrecon).'
+        echo '   -t TOOLS    Comma-separated list of modules and/or tools to install (e.g. -t base,ext,roadrecon).'
         echo '               *IMPORTANT*: The "base" module has to be installed at least once!'
         echo '   -u          Update kali-prep and other pre-installed repos (SecLists, PayloadsAllTheThings)'
         echo '   -v          Increase verbosity level.'
@@ -68,43 +68,43 @@ virtualenvwrapper           base                    Requires ZSH; Adds stuff to 
 
 TOOLS                       MODULES                 FURTHER INFORMATION (workon venv | ~# cmd | path: path)
 =========================   ====================    ========================================================
-adidnsdump                  all, internal
-azure-cli                   all, azure
+adidnsdump                  all, int
+azure-cli                   all, azu
 azure-stormspotter          -                       Not used during audits right now
-bloodhound                  all, internal
-certipy                     all, internal
-cme-stable                  all, internal           ~# crackmapexec
+bloodhound                  all, int
+certipy                     all, int
+cme-stable                  all, int                ~# crackmapexec
 cme-latest                  -                       Kali already has the latest public version (~# cme)
 empire                      -                       Original repo - not maintained anymore
 empire30                    -                       New repo, but not used during audits right now
-donpapi                     all, internal           
-eyewitness                  all, internal
+donpapi                     all, int           
+eyewitness                  all, int
 ffuf                        all, web
-go-windapsearch             all, internal
+go-windapsearch             all, int
 gobuster                    all, web
-impacket-bleeding-edge      all, internal           workon impacket | ~# ntlmrelayx | ~# ...
-impacket-static-binaries    all, internal           ~# getuserspns | ~# gettgt
-invokemimikatz              all, internal           path: /root/tools/Invoke-Mimikatz.ps1
-kerbrute                    all, internal
-krbrelayx                   all, internal           ~# addspn | ~# dnstool | ~# krbrelayx | ~# printerbug
-ldaprelayscan               all, internal           
-masscan                     all, external
-maxpy                       all, internal           ~# max
-mitm6                       all, internal
+impacket-bleeding-edge      all, int                workon impacket | ~# ntlmrelayx | ~# ...
+impacket-static-binaries    all, int                ~# getuserspns | ~# gettgt
+invokemimikatz              all, int                path: /root/tools/Invoke-Mimikatz.ps1
+kerbrute                    all, int
+krbrelayx                   all, int                ~# addspn | ~# dnstool | ~# krbrelayx | ~# printerbug
+ldaprelayscan               all, int           
+masscan                     all, ext
+maxpy                       all, int                ~# max
+mitm6                       all, int
 nikto                       -                       Not in use right now; Installs docker image.
 nuclei                      all, web 
-lsassy-and-procdump         all, internal           ~# lsassy ... --procdump /root/tools/procdump/procdump.exe
-pcredz                      all, internal           
-powerhub                    all, internal           workon powerhub
-printnightmare              all, internal           workon printnightmare | ~# cve-2021-1675
+lsassy-and-procdump         all, int                ~# lsassy ... --procdump /root/tools/procdump/procdump.exe
+pcredz                      all, int           
+powerhub                    all, int                workon powerhub
+printnightmare              all, int                workon printnightmare | ~# cve-2021-1675
 pyfuscation                 -                       Not in use right now
-pypykatz                    all, internal 
-rdp-sec-check               all, internal 
-responder-bleeding-edge     all, internal           ~# responder-dev
-roadrecon                   all, azure 
-scoutsuite                  all, azure              workon scoutsuite
-silentbridge                all, internal 
-sqlplus                     all, internal
+pypykatz                    all, int 
+rdp-sec-check               all, int 
+responder-bleeding-edge     all, int                ~# responder-dev
+roadrecon                   all, azu 
+scoutsuite                  all, azu                workon scoutsuite
+silentbridge                all, int 
+sqlplus                     all, int
 windapsearch                -                       Superseded by go-windapsearch
 '
     exit 1
@@ -396,7 +396,7 @@ printf "${BLUEB}[i] Entering installation routine for pentesting tools (phase 1)
 # Install EyeWitness first because it clears the log
 install_eyewitness () {
     CURRENT_TOOL="eyewitness"
-    TAGS=("all" "azure")
+    TAGS=("all" "azu")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -423,7 +423,7 @@ printf "${BLUEB}[i] Entering installation routine for pentesting tools (phase 2)
 
 install_adidnsdump () {
     CURRENT_TOOL="adidnsdump"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -440,7 +440,7 @@ install_adidnsdump
 
 install_azure-cli () {
     CURRENT_TOOL="azure-cli"
-    TAGS=("all" "azure")
+    TAGS=("all" "azu")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -479,7 +479,7 @@ install_azure_stormspotter
 
 install_bloodhound () {
     CURRENT_TOOL="bloodhound"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -498,7 +498,7 @@ install_bloodhound
 
 install_certipy () {
     CURRENT_TOOL="certipy"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -541,7 +541,7 @@ install_cme_latest
 
 install_cme_stable () {
     CURRENT_TOOL="cme-stable"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
     
@@ -561,7 +561,7 @@ install_cme_stable
 
 install_donpapi () {
     CURRENT_TOOL="donpapi"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -623,7 +623,7 @@ install_empire_3.0
 
 install_ffuf () {
     CURRENT_TOOL="ffuf"
-    TAGS=("all" "external" "web")
+    TAGS=("all" "web")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -640,7 +640,7 @@ install_ffuf
 
 install_go-windapsearch () {
     CURRENT_TOOL="go-windapsearch"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -662,7 +662,7 @@ install_go-windapsearch
 
 install_gobuster () {
     CURRENT_TOOL="gobuster"
-    TAGS=("all" "external" "web")
+    TAGS=("all" "web")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -679,7 +679,7 @@ install_gobuster
 
 install_impacket_bleeding_edge () {
     CURRENT_TOOL="impacket-bleeding-edge"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -703,7 +703,7 @@ install_impacket_bleeding_edge
 
 install_impacket_static_binaries () {
     CURRENT_TOOL="impacket-static-binaries"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -728,7 +728,7 @@ install_impacket_static_binaries
 
 install_kerbrute () {
     CURRENT_TOOL="kerbrute"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -750,7 +750,7 @@ install_kerbrute
 
 install_krbrelayx () {
     CURRENT_TOOL="krbrelayx"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -782,7 +782,7 @@ install_krbrelayx
 
 install_ldaprelayscan () {
     CURRENT_TOOL="ldaprelayscan"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -805,7 +805,7 @@ install_ldaprelayscan
 
 install_lsassy_and_procdump () {
     CURRENT_TOOL="lsassy-and-procdump"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -815,7 +815,7 @@ install_lsassy_and_procdump () {
         if [[ $WHATIF -eq 0 ]]; then
             python3 -m pip install lsassy
             mkdir -p /root/tools/procdump
-            curl -L https://download.sysinternals.com/files/Procdump.zip -o /root/tools/procdump/procdump.zip
+            curl -L https://download.sysints.com/files/Procdump.zip -o /root/tools/procdump/procdump.zip
             unzip /root/tools/procdump/procdump.zip
         fi
     fi
@@ -825,7 +825,7 @@ install_lsassy_and_procdump
 
 install_masscan () {
     CURRENT_TOOL="masscan"
-    TAGS=("all" "external" "internal")
+    TAGS=("all" "ext")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -849,7 +849,7 @@ install_masscan
 
 install_maxpy () {
     CURRENT_TOOL="maxpy"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -874,7 +874,7 @@ install_maxpy
 
 install_mitm6 () {
     CURRENT_TOOL="mitm6"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -911,7 +911,7 @@ install_nikto
 
 install_nuclei () {
     CURRENT_TOOL="nuclei"
-    TAGS=("all" "external" "web")
+    TAGS=("all" "web")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -929,7 +929,7 @@ install_nuclei
 
 install_pcredz () {
     CURRENT_TOOL="pcredz"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -952,7 +952,7 @@ install_pcredz
 
 install_powerhub () {
     CURRENT_TOOL="powerhub"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -977,7 +977,7 @@ install_powerhub
 
 install_printnightmare () {
     CURRENT_TOOL="printnightmare"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -1027,7 +1027,7 @@ install_pyfuscation
 
 install_pypykatz () {
     CURRENT_TOOL="pypykatz"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -1044,7 +1044,7 @@ install_pypykatz
 
 install_rdp_sec_check () {
     CURRENT_TOOL="rdp-sec-check"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -1066,7 +1066,7 @@ install_rdp_sec_check
 
 install_responder_bleeding_edge () {
     CURRENT_TOOL="responder-bleeding-edge"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -1087,7 +1087,7 @@ install_responder_bleeding_edge
 
 install_roadrecon () {
     CURRENT_TOOL="roadrecon"
-    TAGS=("all" "azure")
+    TAGS=("all" "azu")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -1104,7 +1104,7 @@ install_roadrecon
 
 install_scoutsuite () {
     CURRENT_TOOL="scoutsuite"
-    TAGS=("all" "azure")
+    TAGS=("all" "azu")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -1129,7 +1129,7 @@ install_scoutsuite
 
 install_silentbridge () {
     CURRENT_TOOL="silentbridge"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -1166,7 +1166,7 @@ install_silentbridge
 
 install_sqlplus () {
     CURRENT_TOOL="sqlplus"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
@@ -1220,7 +1220,7 @@ printf "${BLUEB}[i] Entering download routine for red team tooling, scripts, etc
 
 download_invokemimikatz () {
     CURRENT_TOOL="invokemimikatz"
-    TAGS=("all" "internal")
+    TAGS=("all" "int")
     TAGS+=$CURRENT_TOOL
     check_install_queue
 
